@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle - Sol (Assistente Virtual)</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- QRCode Lib -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-wrap">
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="sun-icon">☀️</div>
+                <h2>Sol <span>Tô de boa</span></h2>
+            </div>
+            
+            <nav class="main-nav">
+                <button class="nav-btn active" data-tab="tab-status">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    Conexão & Status
+                </button>
+                <button class="nav-btn" data-tab="tab-knowledge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    Base de Conhecimento
+                </button>
+                <button class="nav-btn" data-tab="tab-logs">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                    Painel de Conversas
+                </button>
+            </nav>
+        </aside>
+
+        <main class="content-area">
+            
+            <!-- TAB 1: STATUS -->
+            <section id="tab-status" class="tab-content active">
+                <header class="section-header">
+                    <h1>Status da Conexão</h1>
+                    <p class="subtitle">Conecte o seu WhatsApp ou o da sua loja lendo o código abaixo.</p>
+                </header>
+
+                <div class="status-card glass">
+                    <div class="status-indicator">
+                        <span id="txt-status" class="badge badge-connecting">Carregando...</span>
+                    </div>
+
+                    <div id="qr-container" class="qr-box">
+                        <p class="qr-instruction">Aguardando geração do QR Code...</p>
+                        <!-- QR Code será injetado aqui -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: KNOWLEDGE -->
+            <section id="tab-knowledge" class="tab-content">
+                <header class="section-header">
+                    <h1>Inteligência e Conhecimento</h1>
+                    <p class="subtitle">Cadastre links de sites (até 3) para que a Sol leia e use como cérebro das suas respostas.</p>
+                </header>
+
+                <div class="glass form-card">
+                    <form id="url-form">
+                        <div class="input-group">
+                            <input type="url" id="input-url" placeholder="Ex: https://clubetodeboa.com.br/regras" required>
+                            <button type="submit" class="btn-primary" id="btn-add-url">Adicionar URL</button>
+                        </div>
+                        <p id="url-feedback" class="feedback"></p>
+                    </form>
+                </div>
+
+                <div class="urls-grid" id="urls-list">
+                    <!-- Cards de URLs renderizadas aqui -->
+                </div>
+            </section>
+
+            <!-- TAB 3: LOGS -->
+            <section id="tab-logs" class="tab-content">
+                <header class="section-header">
+                    <h1>Painel de Conversas</h1>
+                    <p class="subtitle">Acompanhe as interações que a Sol está tendo com os clientes.</p>
+                </header>
+                
+                <div class="table-responsive glass p-0">
+                    <table class="logs-table">
+                        <thead>
+                            <tr>
+                                <th>Data/Hora</th>
+                                <th>Quem Enviou</th>
+                                <th>Tipo de Msg</th>
+                                <th>Mensagem ou Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logs-body">
+                            <!-- Logs injetados aqui -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
