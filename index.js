@@ -21,7 +21,7 @@ const isProducao = process.env.NODE_ENV === 'production';
 
 // Inicializa WhatsApp Client
 console.log('Iniciando cliente do WhatsApp...');
-({const client = new Client({
+const client = new Client
     authStrategy: new LocalAuth(),
     puppeteer: {
         executablePath: isProducao ? '/usr/bin/google-chrome-stable' : undefined,
