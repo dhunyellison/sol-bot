@@ -24,7 +24,7 @@ console.log('Iniciando cliente do WhatsApp...');
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
-        executablePath: isProducao ? '/usr/bin/google-chrome-stable' : undefined,
+        headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
     }
 });
